@@ -1,11 +1,12 @@
 <template>
   <v-app>
     <v-navigation-drawer
-      :mini-variant.sync="miniVariant"
       :clipped="clipped"
       v-model="drawer"
       fixed
       app
+      class="indigo lighten-4"
+      dark
     >
       <v-list>
         <v-list-tile
@@ -15,7 +16,7 @@
           v-for="(item, i) in items"
           exact
         >
-          <v-list-tile-action>
+          <v-list-tile-action dark>
             <v-icon v-html="item.icon"></v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
@@ -24,14 +25,14 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar fixed app :clipped-left="clipped" color="primary">
+    <v-toolbar fixed app dark :clipped-left="clipped" color="primary">
       <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
-      <v-btn
+      <!--<v-btn
         icon
         @click.stop="miniVariant = !miniVariant"
       >
         <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
-      </v-btn>
+      </v-btn>-->
       <v-btn
         icon
         @click.stop="clipped = !clipped"
@@ -83,7 +84,7 @@
   export default {
     data () {
       return {
-        clipped: false,
+        clipped: true,
         drawer: true,
         fixed: false,
         items: [
@@ -93,8 +94,13 @@
         miniVariant: false,
         right: true,
         rightDrawer: false,
+        temporary: true,
         title: 'Vuetify.js'
       }
     }
   }
 </script>
+
+<style>
+
+</style>

@@ -1,6 +1,6 @@
 export const state = () => ({
   sidebar: false,
-  authUser: true
+  authUser: null
 })
 
 export const mutations = {

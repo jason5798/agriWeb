@@ -49,7 +49,7 @@
   for (var i = 0; i < 5; i++) {
     icons.push(icon1)
   }
-  var itemLight = 'blue-grey lighten-1'
+  var itemLight = 't1'
 
   function getItem (name, selected, length) {
     var obj = {}

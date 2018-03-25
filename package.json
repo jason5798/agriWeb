@@ -1,6 +1,6 @@
 {
   "name": "agriweb",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Nuxt.js + Vuetify.js project",
   "author": "jason_huang <jason_huang@gemteks.com>",
   "private": true,
