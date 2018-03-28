@@ -62,12 +62,7 @@
 
   export default {
     layout: 'post',
-    // middleware: ['auth'],
-    fetch ({redirect, store}) {
-      if (!store.state.authUser) {
-        redirect('/login')
-      }
-    },
+    middleware: 'auth',
     components: {
       SubItem,
       AgriMap,

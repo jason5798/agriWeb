@@ -3,9 +3,9 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const _6dae4714 = () => import('..\\pages\\login.vue' /* webpackChunkName: "pages_login" */).then(m => m.default || m)
-const _b77753b2 = () => import('..\\pages\\inspire.vue' /* webpackChunkName: "pages_inspire" */).then(m => m.default || m)
-const _00fd8d42 = () => import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */).then(m => m.default || m)
+const _4a5b966d = () => import('..\\pages\\login.vue' /* webpackChunkName: "pages_login" */).then(m => m.default || m)
+const _b89f2344 = () => import('..\\pages\\inspire.vue' /* webpackChunkName: "pages_inspire" */).then(m => m.default || m)
+const _fe981954 = () => import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */).then(m => m.default || m)
 
 
 
@@ -67,17 +67,17 @@ export function createRouter () {
     routes: [
 		{
 			path: "/login",
-			component: _6dae4714,
+			component: _4a5b966d,
 			name: "login"
 		},
 		{
 			path: "/inspire",
-			component: _b77753b2,
+			component: _b89f2344,
 			name: "inspire"
 		},
 		{
 			path: "/",
-			component: _00fd8d42,
+			component: _fe981954,
 			name: "index"
 		}
     ],

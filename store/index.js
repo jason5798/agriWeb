@@ -1,10 +1,15 @@
 export const state = () => ({
   sidebar: false,
-  authUser: null
+  authUser: false
 })
+
+export const getters = {
+  authUser: state => state.authUser
+}
 
 export const mutations = {
   SET_USER: function (state, user) {
+    // console.log('$ mutations SET_USER')
     state.authUser = user
   },
   toggleSidebar (state) {
@@ -19,10 +24,16 @@ export const actions = {
       commit('SET_USER', req.session.authUser)
     }
   },
-  async login ({ commit }, { username, password }) {
+  fetch ({redirect, store}) {
+    if (store.state.authUser) {
+      redirect('/')
+    }
+  },
+  async login ({ commit }, user) {
     try {
-      const { data } = await this.$axios.post('/api/login', { username, password })
-      commit('SET_USER', data)
+      console.log('$store login' + JSON.stringify(user))
+      // const { data } = await this.$axios.post('/api/login', {user.login, user.pwd})
+      commit('SET_USER', user)
     } catch (error) {
       if (error.response && error.response.status === 401) {
         throw new Error('Bad credentials')

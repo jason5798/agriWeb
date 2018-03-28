@@ -1,6 +1,7 @@
 <template>
 
     <v-container fluid>
+
         <img src="~/static/img/logo_company.png" width="150" height="48"/>
 
         <v-layout align-center justify-center>
@@ -19,16 +20,7 @@
                         <v-toolbar-title>登入</v-toolbar-title>
                         <v-spacer></v-spacer>
                         <v-tooltip bottom>
-                            <v-btn
-                                    icon
-                                    large
-                                    :href="source"
-                                    target="_blank"
-                                    slot="activator"
-                            >
-                                <v-icon large>code</v-icon>
-                            </v-btn>
-                            <span>Source</span>
+
                         </v-tooltip>
                     </v-toolbar>
                     <v-card-text>
@@ -38,13 +30,23 @@
                         </v-form>
                     </v-card-text>
                     <v-card-actions>
-                        {{msg}}
+                        <v-alert outline
+                                 color="error"
+                                 icon="warning"
+                                 dismissible
+                                 transition="scale-transition"
+                                 v-model="alert">
+                            {{message}}
+                        </v-alert>
+
+
                         <v-spacer></v-spacer>
                         <v-btn large color="primary" @click="toLogin">登入</v-btn>
                     </v-card-actions>
                 </v-card>
             </v-flex>
         </v-layout>
+
     </v-container>
 </template>
 
@@ -55,11 +57,43 @@
       dialog: true,
       login: '',
       pwd: '',
-      msg: ''
+      msg: '',
+      alert: false,
+      message: null
     }),
     methods: {
-      toLogin: function () {
+      async toLogin () {
         this.msg = this.login + ':' + this.pwd
+        var url = 'http://localhost:8000/user/v1/login/gemtek'
+        var json = {
+          acc: this.login,
+          pwd: this.pwd,
+          type: 0
+        }
+        const res = await this.$axios.$post(url, json)
+        console.log('userInfo : ' + JSON.stringify(res.userInfo))
+        if (res.responseCode === '000') {
+          this.$store.dispatch('login', res.userInfo)
+          var authUser = this.$store.getters.authUser
+          console.log('$ test : ' + JSON.stringify(res))
+          console.log('$ authUser: ' + JSON.stringify(authUser))
+          this.$router.replace('/')
+        } else if (res.responseCode) {
+          this.alert = true
+          if (res.responseMsg) {
+            this.message = res.responseMsg
+          } else {
+            this.message = '網路異常'
+          }
+        }
+        /* this.$store.dispatch('login', {'login': this.login, 'pwd': this.pwd})
+          .then(data => {
+            this.$router.replace('/')
+            // console.log(data)
+          })
+          .catch(err => {
+            console.log(err)
+          }) */
       }
     }
   }
