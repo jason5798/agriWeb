@@ -4,8 +4,15 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 const _4a5b966d = () => import('..\\pages\\login.vue' /* webpackChunkName: "pages_login" */).then(m => m.default || m)
-const _b89f2344 = () => import('..\\pages\\inspire.vue' /* webpackChunkName: "pages_inspire" */).then(m => m.default || m)
+const _1f388565 = () => import('..\\pages\\find.vue' /* webpackChunkName: "pages_find" */).then(m => m.default || m)
+const _8b2aec52 = () => import('..\\pages\\deviceLocation.vue' /* webpackChunkName: "pages_deviceLocation" */).then(m => m.default || m)
+const _0f163c62 = () => import('..\\pages\\chart.vue' /* webpackChunkName: "pages_chart" */).then(m => m.default || m)
+const _3676c3dc = () => import('..\\pages\\deviceType.vue' /* webpackChunkName: "pages_deviceType" */).then(m => m.default || m)
+const _f4667db4 = () => import('..\\pages\\deviceType\\index.vue' /* webpackChunkName: "pages_deviceType_index" */).then(m => m.default || m)
+const _33c4d50e = () => import('..\\pages\\deviceType\\_id.vue' /* webpackChunkName: "pages_deviceType__id" */).then(m => m.default || m)
 const _fe981954 = () => import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */).then(m => m.default || m)
+const _f507d728 = () => import('..\\pages\\index\\index.vue' /* webpackChunkName: "pages_index_index" */).then(m => m.default || m)
+const _68c77c58 = () => import('..\\pages\\index\\_id.vue' /* webpackChunkName: "pages_index__id" */).then(m => m.default || m)
 
 
 
@@ -71,14 +78,51 @@ export function createRouter () {
 			name: "login"
 		},
 		{
-			path: "/inspire",
-			component: _b89f2344,
-			name: "inspire"
+			path: "/find",
+			component: _1f388565,
+			name: "find"
+		},
+		{
+			path: "/deviceLocation",
+			component: _8b2aec52,
+			name: "deviceLocation"
+		},
+		{
+			path: "/chart",
+			component: _0f163c62,
+			name: "chart"
+		},
+		{
+			path: "/deviceType",
+			component: _3676c3dc,
+			children: [
+				{
+					path: "",
+					component: _f4667db4,
+					name: "deviceType"
+				},
+				{
+					path: ":id",
+					component: _33c4d50e,
+					name: "deviceType-id"
+				}
+			]
 		},
 		{
 			path: "/",
 			component: _fe981954,
-			name: "index"
+			children: [
+				{
+					path: "",
+					component: _f507d728,
+					name: "index"
+				},
+				{
+					path: ":id",
+					component: _68c77c58,
+					name: "index-id"
+				}
+			]
 		}
     ],
     

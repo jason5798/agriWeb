@@ -61,6 +61,9 @@
       alert: false,
       message: null
     }),
+    mounted () {
+      console.log('**** auth : ' + JSON.stringify(this.$store.state.authUser))
+    },
     methods: {
       async toLogin () {
         this.msg = this.login + ':' + this.pwd
@@ -71,12 +74,12 @@
           type: 0
         }
         const res = await this.$axios.$post(url, json)
-        console.log('userInfo : ' + JSON.stringify(res.userInfo))
+        console.log('***************************')
+        console.log('res : ' + res)
         if (res.responseCode === '000') {
-          this.$store.dispatch('login', res.userInfo)
-          var authUser = this.$store.getters.authUser
-          console.log('$ test : ' + JSON.stringify(res))
-          console.log('$ authUser: ' + JSON.stringify(authUser))
+          console.log('login success userInfo : ' + JSON.stringify(res.userInfo))
+          this.$store.dispatch('login', res)
+          console.log('$ this.$store.getters.authUser : ' + JSON.stringify(this.$store.getters.authUser))
           this.$router.replace('/')
         } else if (res.responseCode) {
           this.alert = true
@@ -86,14 +89,6 @@
             this.message = '網路異常'
           }
         }
-        /* this.$store.dispatch('login', {'login': this.login, 'pwd': this.pwd})
-          .then(data => {
-            this.$router.replace('/')
-            // console.log(data)
-          })
-          .catch(err => {
-            console.log(err)
-          }) */
       }
     }
   }

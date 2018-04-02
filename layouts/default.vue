@@ -1,12 +1,11 @@
 <template>
-  <v-app>
+  <v-app dark>
     <v-navigation-drawer
       :clipped="clipped"
       v-model="drawer"
       fixed
       app
-      class="indigo lighten-4"
-      dark
+      class="light-blue darken-3"
     >
       <v-list>
         <v-list-tile
@@ -16,16 +15,16 @@
           v-for="(item, i) in items"
           exact
         >
-          <v-list-tile-action dark>
+          <v-list-tile-action >
             <v-icon v-html="item.icon"></v-icon>
           </v-list-tile-action>
-          <v-list-tile-content>
+          <v-list-tile-content >
             <v-list-tile-title v-text="item.title"></v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar fixed app dark :clipped-left="clipped" color="primary">
+    <v-toolbar fixed app :clipped-left="clipped" color="primary">
       <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
       <!--<v-btn
         icon
@@ -88,14 +87,16 @@
         drawer: true,
         fixed: false,
         items: [
-          { icon: 'apps', title: 'Welcome', to: '/' },
+          { icon: 'view list', title: 'Welcome', to: '/' },
+          { icon: 'place', title: '裝置位置', to: '/deviceLocation' },
           { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' }
         ],
         miniVariant: false,
         right: true,
         rightDrawer: false,
         temporary: true,
-        title: 'Vuetify.js'
+        title: 'Vuetify.js',
+        test: 'dark'
       }
     }
   }

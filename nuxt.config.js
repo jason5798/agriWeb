@@ -17,8 +17,19 @@ module.exports = {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' }
     ]
   },
+  env: {
+    users: [
+      { id: 1, name: 'Kobe Bryant', number: 24 },
+      { id: 2, name: 'Michael Jordan', number: 23 },
+      { id: 3, name: 'Stephen Curry', number: 30 },
+      { id: 4, name: 'Lebron James', number: 23 },
+      { id: 5, name: 'Kevin Durant', number: 35 },
+      { id: 6, name: 'Kyrie Irving', number: 2 }
+    ]
+  },
   plugins: [
     { src: '~/plugins/vuetify.js' },
+    // { src: '~/plugins/vuetable-2.js', ssr: false }
     { src: '~/plugins/vue-google-maps.js', ssr: false }
   ],
   css: [
@@ -43,6 +54,7 @@ module.exports = {
     vendor: [
       '~/plugins/vuetify.js',
       '~/plugins/vue-google-maps.js',
+      // '~/plugins/vuetable-2.js',
       'chart.js',
       'vue-chartjs'
     ],

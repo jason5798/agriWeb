@@ -1,6 +1,8 @@
 export const state = () => ({
   sidebar: false,
-  authUser: false
+  authUser: null,
+  mapList: null,
+  deviceList: null
 })
 
 export const getters = {
@@ -8,6 +10,14 @@ export const getters = {
 }
 
 export const mutations = {
+  SET_DEVICELIST: function (state, list) {
+    console.log('$ mutations SET_DEVICELIST')
+    state.deviceList = list
+  },
+  SET_MAP: function (state, list) {
+    // console.log('$ mutations SET_USER')
+    state.mapList = list
+  },
   SET_USER: function (state, user) {
     // console.log('$ mutations SET_USER')
     state.authUser = user
@@ -27,6 +37,22 @@ export const actions = {
   fetch ({redirect, store}) {
     if (store.state.authUser) {
       redirect('/')
+    }
+  },
+  set_map ({ commit }, list) {
+    try {
+      // console.log('$store set_map' + JSON.stringify(list))
+      commit('SET_MAP', list)
+    } catch (error) {
+      throw error
+    }
+  },
+  set_devicelist ({ commit }, list) {
+    try {
+      // console.log('$store set_map' + JSON.stringify(list))
+      commit('SET_DEVICELIST', list)
+    } catch (error) {
+      throw error
     }
   },
   async login ({ commit }, user) {
